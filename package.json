@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "scripts": {
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --debug"
   },
   "devDependencies": {
     "semantic-release": "^22.0.12",
