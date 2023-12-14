@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/beniutek/github-action-testing/compare/v1.0.0...v1.1.0) (2023-12-14)
+
+
+### Features
+
+* test feature to see how release notes look like. ([bde7875](https://github.com/beniutek/github-action-testing/commit/bde78756ac7808fe6f03dd02c59405d52b1686f6))
+
 # 1.0.0 (2023-12-14)
 
 
