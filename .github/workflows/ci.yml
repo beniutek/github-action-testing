@@ -23,7 +23,7 @@
             GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Install JS dependencies
-          run: bin/yarn
+          run: yarn
           env:
             GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
