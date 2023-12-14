@@ -21,11 +21,13 @@
             cache: yarn
           env:
             GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
         - name: Install JS dependencies
           run: yarn
           env:
             GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
         - name: Dry-Release
           id: dry-semantic-release
