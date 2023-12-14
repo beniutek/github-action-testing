@@ -14,7 +14,6 @@ const commitAnalyzerPlugin = [
   },
 ];
 
-
 const clearReleaseNumber = {
   success: async (pluginConfig, context) => {
     if (context.nextRelease && context.nextRelease.version) {
