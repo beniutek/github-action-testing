@@ -20,19 +20,19 @@
             node-version-file: '.nvmrc'
             cache: yarn
           env:
-            GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
         - name: Install JS dependencies
           run: yarn
           env:
-            GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
         - name: Dry-Release
           id: dry-semantic-release
           env:
             GIT_AUTHOR_NAME: '@test-action-bot'
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
           run: |
             echo "Running dry-release for branch ${{ github.ref_name }}"
 
@@ -44,8 +44,8 @@
           id: semantic-release
           env:
             GIT_AUTHOR_NAME: '@dreams-enterprise-bot'
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
           run: |
             RELEASE_VERSION=$(yarn semantic-release | awk -F'::' '/::DES_VERSION::/{print $3}')
 
