@@ -1,5 +1,6 @@
 // how to address the lack of build stuff in changelog?
 // the search continues ...
+// add feature dummy commit
 const commitAnalyzerPlugin = [
   '@semantic-release/commit-analyzer',
   {
