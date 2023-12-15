@@ -1,3 +1,4 @@
+// how to address the lack of build stuff in changelog?
 const commitAnalyzerPlugin = [
   '@semantic-release/commit-analyzer',
   {
@@ -6,7 +7,7 @@ const commitAnalyzerPlugin = [
       { type: 'docs', scope: 'readme', release: 'patch' },
       { type: 'refactor', release: 'patch' },
       { type: 'style', release: 'patch' },
-      { type: 'build', release: 'patch' },
+      // { type: 'build', release: 'patch' },
     ],
     parserOpts: {
       noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
