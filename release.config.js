@@ -8,6 +8,7 @@ const commitAnalyzerPlugin = [
       { type: 'refactor', release: 'patch' },
       { type: 'style', release: 'patch' },
       { type: 'build', release: 'patch' },
+      { type: 'foo', release: 'patch' }
     ],
     parserOpts: {
       noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
