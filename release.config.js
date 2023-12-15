@@ -7,7 +7,7 @@ const commitAnalyzerPlugin = [
       { type: 'docs', scope: 'readme', release: 'patch' },
       { type: 'refactor', release: 'patch' },
       { type: 'style', release: 'patch' },
-      // { type: 'build', release: 'patch' },
+      { type: 'build', release: 'patch' },
     ],
     parserOpts: {
       noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
@@ -41,6 +41,7 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
+        preset: "angular",
         changelogFile: 'CHANGELOG.md',
       },
     ],
