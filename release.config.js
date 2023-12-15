@@ -1,4 +1,5 @@
 // how to address the lack of build stuff in changelog?
+// the search continues ...
 const commitAnalyzerPlugin = [
   '@semantic-release/commit-analyzer',
   {
