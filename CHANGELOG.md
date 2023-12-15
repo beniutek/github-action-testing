@@ -1,3 +1,5 @@
+## [1.1.5](https://github.com/beniutek/github-action-testing/compare/v1.1.4...v1.1.5) (2023-12-15)
+
 ## [1.1.4](https://github.com/beniutek/github-action-testing/compare/v1.1.3...v1.1.4) (2023-12-15)
 
 ## [1.1.3](https://github.com/beniutek/github-action-testing/compare/v1.1.2...v1.1.3) (2023-12-15)
