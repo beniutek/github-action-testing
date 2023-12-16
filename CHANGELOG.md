@@ -12,6 +12,28 @@
 * try to add new build type stuff into changelog ([4c8da07](https://github.com/beniutek/github-action-testing/commit/4c8da0706c7b01bbf4908b4b109cc8756017923b))
 * yet another change to see what happens ([efc20d7](https://github.com/beniutek/github-action-testing/commit/efc20d74c9cf0549ad8766550f9d5757845818ce))
 
+
+### Features
+
+* add dummy feature commit ([3c394f0](https://github.com/beniutek/github-action-testing/commit/3c394f0d32879313a916a8f6fab9e944fc8b93e4))
+* another feat test 2 test test ([0cc68a9](https://github.com/beniutek/github-action-testing/commit/0cc68a911b484db9b95e99959c7042919ef56e8c))
+* handle more types of commits for the changelog ([43a26f4](https://github.com/beniutek/github-action-testing/commit/43a26f4a1e059336fc3175ae053c93fd324ddbf2))
+* this is another test feature ([3170e08](https://github.com/beniutek/github-action-testing/commit/3170e080cd523b66b8e9bf4d61cac097c49a6baa))
+
+# [1.2.0](https://github.com/beniutek/github-action-testing/compare/v1.1.1...v1.2.0) (2023-12-16)
+
+
+### Build
+
+* build duild build ([2955897](https://github.com/beniutek/github-action-testing/commit/29558974506cffbe57201028e70c7d63849dde90))
+* new preset - angular ([6636ff1](https://github.com/beniutek/github-action-testing/commit/6636ff1cebbd6439bd75a830897e428d26a645f9))
+* test another build ([f5c98dd](https://github.com/beniutek/github-action-testing/commit/f5c98dd7ffba962254c052c3277d617293892580))
+* test if build commits change whatsover now ([94628ae](https://github.com/beniutek/github-action-testing/commit/94628aec977ad17f720312162390ddd18c68723c))
+* test stuff 123 ([c86f3a0](https://github.com/beniutek/github-action-testing/commit/c86f3a0b2685093185687bd455d6185563f5dc42))
+* try now and check debugs ([5efb13e](https://github.com/beniutek/github-action-testing/commit/5efb13e20480de1a31a88956c00f1446be1171e0))
+* try to add new build type stuff into changelog ([4c8da07](https://github.com/beniutek/github-action-testing/commit/4c8da0706c7b01bbf4908b4b109cc8756017923b))
+* yet another change to see what happens ([efc20d7](https://github.com/beniutek/github-action-testing/commit/efc20d74c9cf0549ad8766550f9d5757845818ce))
+
 # [1.3.0](https://github.com/beniutek/github-action-testing/compare/v1.2.0...v1.3.0) (2023-12-16)
 
 
