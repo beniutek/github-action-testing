@@ -69,7 +69,7 @@ module.exports = {
     [
       '@semantic-release/release-notes-generator',
       {
-        writerOpts: writerOpts: customWriterOpts,
+        writerOpts: customWriterOpts,
       }
     ],
     [
