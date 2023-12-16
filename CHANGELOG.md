@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/beniutek/github-action-testing/compare/v1.1.1...v1.2.0) (2023-12-16)
+
+
+### Build
+
+* build duild build ([2955897](https://github.com/beniutek/github-action-testing/commit/29558974506cffbe57201028e70c7d63849dde90))
+* new preset - angular ([6636ff1](https://github.com/beniutek/github-action-testing/commit/6636ff1cebbd6439bd75a830897e428d26a645f9))
+* test another build ([f5c98dd](https://github.com/beniutek/github-action-testing/commit/f5c98dd7ffba962254c052c3277d617293892580))
+* test if build commits change whatsover now ([94628ae](https://github.com/beniutek/github-action-testing/commit/94628aec977ad17f720312162390ddd18c68723c))
+* test stuff 123 ([c86f3a0](https://github.com/beniutek/github-action-testing/commit/c86f3a0b2685093185687bd455d6185563f5dc42))
+* try now and check debugs ([5efb13e](https://github.com/beniutek/github-action-testing/commit/5efb13e20480de1a31a88956c00f1446be1171e0))
+* try to add new build type stuff into changelog ([4c8da07](https://github.com/beniutek/github-action-testing/commit/4c8da0706c7b01bbf4908b4b109cc8756017923b))
+* yet another change to see what happens ([efc20d7](https://github.com/beniutek/github-action-testing/commit/efc20d74c9cf0549ad8766550f9d5757845818ce))
+
 # [1.3.0](https://github.com/beniutek/github-action-testing/compare/v1.2.0...v1.3.0) (2023-12-16)
 
 
