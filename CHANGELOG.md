@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/beniutek/github-action-testing/compare/v1.2.0...v1.3.0) (2023-12-16)
+
+
+### Build
+
+* build duild build ([2955897](https://github.com/beniutek/github-action-testing/commit/29558974506cffbe57201028e70c7d63849dde90))
+* yet another change to see what happens ([efc20d7](https://github.com/beniutek/github-action-testing/commit/efc20d74c9cf0549ad8766550f9d5757845818ce))
+
 # [1.2.0](https://github.com/beniutek/github-action-testing/compare/v1.1.1...v1.2.0) (2023-12-16)
 
 
