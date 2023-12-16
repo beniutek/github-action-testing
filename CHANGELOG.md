@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/beniutek/github-action-testing/compare/v1.2.0...v1.2.1) (2023-12-16)
+
+
+### Build System
+
+* add completely new writer options ([c48df54](https://github.com/beniutek/github-action-testing/commit/c48df5402c52ba3985c3eee21371229a0e0ee99d))
+* fix build ([ec01b91](https://github.com/beniutek/github-action-testing/commit/ec01b91f4817ac0df029d9dc58a6c40be9589d71))
+
 # [1.2.0](https://github.com/beniutek/github-action-testing/compare/v1.1.1...v1.2.0) (2023-12-16)
 
 
