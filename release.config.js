@@ -1,3 +1,4 @@
+// test test test
 const commitAnalyzerPlugin = [
   '@semantic-release/commit-analyzer',
   {
