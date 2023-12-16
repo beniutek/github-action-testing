@@ -86,11 +86,6 @@ const customWriterOpts = {
 
     return commit
   },
-  groupBy: 'type',
-  commitGroupsSort: 'title',
-  commitsSort: ['scope', 'subject'],
-  noteGroupsSort: 'title',
-  notesSort: compareFunc
 };
 
 module.exports = {
