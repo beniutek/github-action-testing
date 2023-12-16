@@ -23,18 +23,7 @@ const customWriterOpts = {
     // Custom handling for 'build' type commits
     if (commit.type === 'build') {
       commit.type = 'Build';
-    }
-
-    if (commit.type === 'feat') {
-      commit.type = 'Features';
-    } else if (commit.type === 'fix') {
-      commit.type = 'Bug Fixes';
-    } else if (commit.type === 'perf') {
-      commit.type = 'Performance Improvements';
-    } else if (commit.type === 'revert') {
-      commit.type = 'Reverts';
-    } else if (!commit.type || commit.type === 'chore') {
-      // Any other type of commit is ignored
+    } else {
       return;
     }
 
@@ -76,12 +65,17 @@ module.exports = {
   branches: ['main'],
   plugins: [
     commitAnalyzerPlugin,
-    '@semantic-release/release-notes-generator',
+    [
+      '@semantic-release/release-notes-generator',
+      {
+        writerOpts: writerOpts: customWriterOpts,
+      }
+    ],
     [
       '@semantic-release/changelog',
       {
-        preset: "angular",
         changelogFile: 'CHANGELOG.md',
+        writerOpts: customWriterOpts,
       },
     ],
     [
