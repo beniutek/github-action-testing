@@ -1,6 +1,3 @@
-// how to address the lack of build stuff in changelog?
-// the search continues ...
-// add feature dummy commit
 const commitAnalyzerPlugin = [
   '@semantic-release/commit-analyzer',
   {
@@ -18,21 +15,60 @@ const commitAnalyzerPlugin = [
   },
 ];
 
-const clearReleaseNumber = {
-  success: async (pluginConfig, context) => {
-    if (context.nextRelease && context.nextRelease.version) {
-      context.logger.log(`::VERSION::${context.nextRelease.version}`);
+// Custom writer options for the release notes and changelog
+const customWriterOpts = {
+  transform: (commit, context) => {
+    const issues = [];
+
+    // Custom handling for 'build' type commits
+    if (commit.type === 'build') {
+      commit.type = 'Build';
     }
-  },
-  verifyRelease: async (pluginConfig, context) => {
-    if (context.options.dryRun) {
-      if (context.nextRelease && context.nextRelease.version) {
-        context.logger.log(`::VERSION::${context.nextRelease.version}`);
-      } else {
-        context.logger.log('NO NEW RELEASE!');
+
+    if (commit.type === 'feat') {
+      commit.type = 'Features';
+    } else if (commit.type === 'fix') {
+      commit.type = 'Bug Fixes';
+    } else if (commit.type === 'perf') {
+      commit.type = 'Performance Improvements';
+    } else if (commit.type === 'revert') {
+      commit.type = 'Reverts';
+    } else if (!commit.type || commit.type === 'chore') {
+      // Any other type of commit is ignored
+      return;
+    }
+
+    if (commit.scope === '*') {
+      commit.scope = '';
+    }
+
+    if (typeof commit.hash === 'string') {
+      commit.shortHash = commit.hash.substring(0, 7);
+    }
+
+    if (typeof commit.subject === 'string') {
+      let url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl;
+      if (url) {
+        url = `${url}/issues/`;
+        // Issue URLs.
+        commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
+          issues.push(issue);
+          return `[#${issue}](${url}${issue})`;
+        });
       }
     }
-  },
+
+    // Remove references that already appear in the subject
+    commit.references = commit.references.filter(reference => {
+      if (issues.indexOf(reference.issue) === -1) {
+        return true;
+      }
+
+      return false;
+    });
+
+    return commit;
+  }
 };
 
 module.exports = {
@@ -55,6 +91,5 @@ module.exports = {
       },
     ],
     '@semantic-release/github',
-    clearReleaseNumber,
   ],
 };
