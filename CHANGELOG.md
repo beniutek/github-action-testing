@@ -1,7 +1,6 @@
-## [1.3.4](https://github.com/beniutek/github-action-testing/compare/v1.3.3...v1.3.4) (2024-01-14)
+## [1.3.5](https://github.com/beniutek/github-action-testing/compare/v1.3.4...v1.3.5) (2024-01-14)
 
 
 ### Build System
 
-* fix filename ([a664c24](https://github.com/beniutek/github-action-testing/commit/a664c24ddedc79218601852acc4d9e75d3661e86))
-* yet another attempt in futility ([490cdac](https://github.com/beniutek/github-action-testing/commit/490cdacf1097bcc76480aca86381a65276757d96))
+* fix cp command ([49df87f](https://github.com/beniutek/github-action-testing/commit/49df87f92031529c8443f9c90d5057c4e94d0672))
