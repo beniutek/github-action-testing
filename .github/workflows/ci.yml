@@ -52,7 +52,7 @@
             ls .
             echo "after ls"
             if [ -f "CHANGELOG.md" ] ; then
-                cat CHANGLEGO.md
+                cat CHANGELOG.md
                 rm CHANGELOG.md
             fi
 
