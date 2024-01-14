@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/beniutek/github-action-testing/compare/v1.3.1...v1.3.2) (2024-01-14)
+
+
+### Build System
+
+* try this now; ([f1dedf6](https://github.com/beniutek/github-action-testing/commit/f1dedf6dd1884618a9ed619dc5b05cbb9626055a))
+
 ## [1.3.1](https://github.com/beniutek/github-action-testing/compare/v1.3.0...v1.3.1) (2024-01-14)
 
 
