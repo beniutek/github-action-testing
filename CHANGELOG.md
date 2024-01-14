@@ -1,7 +1,7 @@
-## [1.3.3](https://github.com/beniutek/github-action-testing/compare/v1.3.2...v1.3.3) (2024-01-14)
+## [1.3.4](https://github.com/beniutek/github-action-testing/compare/v1.3.3...v1.3.4) (2024-01-14)
 
 
 ### Build System
 
-* new changelog flow again... ([98c9e2c](https://github.com/beniutek/github-action-testing/commit/98c9e2c94546acbd1a4485c884bf9e092543e643))
-* new changelog workflow again ([227d54e](https://github.com/beniutek/github-action-testing/commit/227d54e37792e91cd487cbed705aaa13405fb981))
+* fix filename ([a664c24](https://github.com/beniutek/github-action-testing/commit/a664c24ddedc79218601852acc4d9e75d3661e86))
+* yet another attempt in futility ([490cdac](https://github.com/beniutek/github-action-testing/commit/490cdacf1097bcc76480aca86381a65276757d96))
