@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/beniutek/github-action-testing/compare/v1.3.0...v1.3.1) (2024-01-14)
+
+
+### Build System
+
+* add version output to release flow ([0cfa952](https://github.com/beniutek/github-action-testing/commit/0cfa952b1e53e458462df19787d0cdc0fa5cfdd5))
+* try new release with build command ([9edcd89](https://github.com/beniutek/github-action-testing/commit/9edcd891ca39a2d633308e28ac9fed9a1b415c4d))
+
 # [1.3.0](https://github.com/beniutek/github-action-testing/compare/v1.2.1...v1.3.0) (2024-01-14)
 
 
