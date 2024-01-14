@@ -1,4 +1,5 @@
 // generate-changelog.js
+// test changelog stuff
 const fs = require('fs');
 const conventionalChangelog = require('conventional-changelog');
 
