@@ -87,6 +87,23 @@ const customWriterOpts = {
   },
 };
 
+const clearReleaseNumber = {
+  success: async (pluginConfig, context) => {
+    if (context.nextRelease && context.nextRelease.version) {
+      context.logger.log(`::VERSION::${context.nextRelease.version}`);
+    }
+  },
+  verifyRelease: async (pluginConfig, context) => {
+    if (context.options.dryRun) {
+      if (context.nextRelease && context.nextRelease.version) {
+        context.logger.log(`::VERSION::${context.nextRelease.version}`);
+      } else {
+        context.logger.log('NO NEW RELEASE!');
+      }
+    }
+  },
+};
+
 module.exports = {
   preset: 'angular',
   branches: ['main'],
@@ -112,5 +129,6 @@ module.exports = {
       },
     ],
     '@semantic-release/github',
+    clearReleaseNumber,
   ],
 };
