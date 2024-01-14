@@ -1,75 +1,79 @@
 ---
 
-name: CI
+  name: CI
 
-on: [push]
+  on: [push]
 
-permissions:
-  contents: read
+  permissions:
+    contents: read
 
-jobs:
-  static:
-    name: Continious Innovation
-    runs-on: ubuntu-20.04
-    permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PTA_GITHUB_TOKEN }}
+  jobs:
+    static:
+      name: Continious Innovation
+      runs-on: ubuntu-20.04
+      permissions:
+        contents: write # to be able to publish a GitHub release
+        issues: write # to be able to comment on released issues
+        pull-requests: write # to be able to comment on released pull requests
+        id-token: write # to enable use of OIDC for npm provenance
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            token: ${{ secrets.PTA_GITHUB_TOKEN }}
 
-      - name: Set up NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: yarn
-        env:
-          GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+        - name: Set up NodeJS
+          uses: actions/setup-node@v3
+          with:
+            node-version-file: '.nvmrc'
+            cache: yarn
+          env:
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
-      - name: Install JS dependencies
-        run: yarn
-        env:
-          GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+        - name: Install JS dependencies
+          run: yarn
+          env:
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
-      - name: Dry-Release
-        id: dry-semantic-release
-        env:
-          GIT_AUTHOR_NAME: '@test-action-bot'
-          GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-        run: |
-          echo "Running dry-release for branch ${{ github.ref_name }}"
+        - name: Release
+          id: semantic-release
+          env:
+            GIT_AUTHOR_NAME: '@test-action-bot'
+            GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+            GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+          run: |
+            RELEASE_VERSION=$(yarn semantic-release | awk -F'::' '/::VERSION::/{print $3}')
 
-          RELEASE_VERSION=$(yarn semantic-release --dry-run --branches ${{ github.ref_name }} | awk -F'::' '/::VERSION::/{print $3}')
-
-          echo "Release version if this branch is merged: $RELEASE_VERSION"
-
-      - name: Release
-        id: semantic-release
-        env:
-          GIT_AUTHOR_NAME: '@test-action-bot'
-          GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-        run: |
-          RELEASE_VERSION=$(yarn semantic-release | awk -F'::' '/::VERSION::/{print $3}')
-
-          echo "New semantic-release version: $RELEASE_VERSION"
-
-          if [ -z "$RELEASE_VERSION" ]; then
-            echo "No new release version generated."
-            echo "RELEASE_VERSION=none" >> $GITHUB_OUTPUT
-          else
             echo "New semantic-release version: $RELEASE_VERSION"
-            echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_OUTPUT
-          fi
 
+            if [ -z "$RELEASE_VERSION" ]; then
+              echo "No new release version generated."
+              echo "RELEASE_VERSION=none" >> $GITHUB_OUTPUT
+            else
+              echo "New semantic-release version: $RELEASE_VERSION"
+              echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_OUTPUT
+            fi
+
+        - name: Checkout External Changelog Repository
+          uses: actions/checkout@v3
+          with:
+            repository: 'beniutek/test-changelog-stuff'
+            token: ${{ secrets.PTA_GITHUB_TOKEN }} # need to add token to access the this repo
+            path: 'changelog-stuff'
+
+        - name: Copy Changelog from Changelog Repo
+          run: cp changelog-stuff/changelog-folder/CHANGELOG.md .
+
+        - name: Commit Updated Changelog to Changelog Repo
+          run: |
+            cd changelog-stuff/changelog-folder
+            git config user.name ${{ secrets.GIT_USER }}
+            git config user.email ${{ secrets.GIT_EMAIL }}
+            git add CHANGELOG.md
+            git commit -m "chore(changelog): changelog new version: ${steps.semantic-release.outputs.RELEASE_VERSION}"
+            git push origin main
