@@ -48,9 +48,14 @@
 
         - name: Copy Changelog from Changelog Repo
           run: |
+            echo "ls output:"
+            ls .
+            echo "after ls"
             if [ -f "CHANGELOG.md" ] ; then
+                cat CHANGLEGO.md
                 rm CHANGELOG.md
             fi
+
             cp changelog-stuff/changelog-folder/CHANGELOG.md .
 
         - name: Release
@@ -77,7 +82,16 @@
           env:
             token: ${{ secrets.PTA_GITHUB_TOKEN }} # need to add token to access the this repo
           run: |
+
+            if [ -f "changelog-stuff/changelog-folder/CHANGELOG.md" ] ; then
+              echo "changelog in changelog-folder exists!"
+              cat changelog-stuff/changelog-folder/CHANGELOG.md
+              rm changelog-stuff/changelog-folder/CHANGELOG.md
+            fi
+
+            cp changelog-stuff/changelog-folder/CHANGELOG.md .
             cd changelog-stuff/changelog-folder
+
             git config user.name ${{ secrets.GIT_USER }}
             git config user.email ${{ secrets.GIT_EMAIL }}
             git add CHANGELOG.md
