@@ -89,7 +89,7 @@
               rm changelog-stuff/changelog-folder/CHANGELOG.md
             fi
 
-            cp changelog-stuff/changelog-folder/CHANGELOG.md .
+            cp CHANGELOG.md changelog-stuff/changelog-folder/
             cd changelog-stuff/changelog-folder
 
             git config user.name ${{ secrets.GIT_USER }}
