@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/beniutek/github-action-testing/compare/v1.2.1...v1.3.0) (2024-01-14)
+
+
+### Continuous Integration
+
+* new changelog workflow ([00b58c5](https://github.com/beniutek/github-action-testing/commit/00b58c583dfd28417e8da01a0528eef1a788a387))
+
+
+### Features
+
+* try new changelog release stuff ([377be61](https://github.com/beniutek/github-action-testing/commit/377be6173fbd82a3ab71e375ed0c39edc780a9c9))
+
 ## [1.2.1](https://github.com/beniutek/github-action-testing/compare/v1.2.0...v1.2.1) (2023-12-16)
 
 
