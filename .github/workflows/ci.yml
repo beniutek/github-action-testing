@@ -39,20 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
 
-      - name: Dry-Release
-        id: dry-semantic-release
-        env:
-          GIT_AUTHOR_NAME: '@test-action-bot'
-          GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-          GITHUB_NPM_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
-        run: |
-          echo "Running dry-release for branch ${{ github.ref_name }}"
-
-          RELEASE_VERSION=$(yarn semantic-release --dry-run --branches ${{ github.ref_name }} | awk -F'::' '/::VERSION::/{print $3}')
-
-          echo "Release version if this branch is merged: $RELEASE_VERSION"
-
       - name: Release
         id: semantic-release
         env:
@@ -73,3 +59,37 @@ jobs:
             echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_OUTPUT
           fi
 
+      # - name: Create Changelog Branch
+      #   run: |
+      #     git checkout -b update-changelog-${{ github.run_id }}
+      #     git config user.name "github-actions"
+      #     git config user.email "github-actions@github.com"
+      #     git add CHANGELOG.md
+      #     git commit -m "Update CHANGELOG.md"
+      #     git push origin update-changelog-${{ github.run_id }}
+
+      # - name: Create Pull Request
+      #   run: |
+      #     gh pr create --base main --head update-changelog-${{ github.run_id }} --title "Update Changelog" --body "Automated changelog update"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PTA_GITHUB_TOKEN }}
+
+
+      - name: Checkout External Changelog Repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'beniutek/test-changelog-stuff'
+          token: ${{ secrets.PTA_GITHUB_TOKEN }} # need to add token to access the this repo
+          path: 'changelog-stuff'
+
+      - name: Copy Changelog from Changelog Repo
+        run: cp changelog-stuff/changelog-folder/CHANGELOG.md .
+
+      - name: Commit Updated Changelog to Changelog Repo
+        run: |
+          cd changelog-stuff/changelog-folder
+          git config user.name ${{ secrets.GIT_USER }}
+          git config user.email ${{ secrets.GIT_EMAIL }}
+          git add CHANGELOG.md
+          git commit -m "chore(changelog): changelog new version: ${steps.semantic-release.outputs.RELEASE_VERSION}"
+          git push origin main
