@@ -70,6 +70,8 @@
           run: cp changelog-stuff/changelog-folder/CHANGELOG.md .
 
         - name: Commit Updated Changelog to Changelog Repo
+          env:
+            token: ${{ secrets.PTA_GITHUB_TOKEN }} # need to add token to access the this repo
           run: |
             cd changelog-stuff/changelog-folder
             git config user.name ${{ secrets.GIT_USER }}
