@@ -75,5 +75,5 @@
             git config user.name ${{ secrets.GIT_USER }}
             git config user.email ${{ secrets.GIT_EMAIL }}
             git add CHANGELOG.md
-            git commit -m "chore(changelog): changelog new version: ${steps.semantic-release.outputs.RELEASE_VERSION}"
+            git commit -m "chore(changelog): update changelog file"
             git push origin main
